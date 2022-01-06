@@ -59,6 +59,37 @@ fadeEls.forEach(function (fadeEl, index) {
 // new Swiper(선택자, 옵션)
 new Swiper('.notice-line .swiper-container', {
   direction: 'vertical',
-  // autoplay: true,
-  // loop: true,
+  autoplay: true,
+  loop: true,
 });
+
+new Swiper('.promotion .swiper-container', {
+  slidesPerView: 3,
+  spaceBetween: 10,
+  centeredSlides: true,
+  loop: true,
+  autoplay: {
+    delay: 5000
+  },
+  pagination: {
+    el: '.promotion .swiper-pagination', //페이지 번호 요소 선택자
+    clickable: true,
+  },
+  navigation: {
+    prevEl: '.promotion .swiper-prev',
+    nextEl: '.promotion .swiper-next',
+  }
+});
+
+const promotionEl = document.querySelector('.promotion')
+const promotionToggleBtn = document.querySelector('.toggle-promotion')
+let isHidePromotion = false;
+
+promotionToggleBtn.addEventListener('click', function () {
+  isHidePromotion = !isHidePromotion
+  if (isHidePromotion) {
+    promotionEl.classList.add('hide')
+  } else {
+    promotionEl.classList.remove('hide')
+  }
+})
